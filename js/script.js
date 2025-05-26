@@ -177,6 +177,44 @@ function updateFormProgress() {
         progressBar.style.width = progress + '%';
     }
 }
+// Prevent zoom on input focus (iOS)
+document.addEventListener('touchstart', function() {}, true);
+
+// Handle orientation change
+window.addEventListener('orientationchange', function() {
+  setTimeout(function() {
+    window.scrollTo(0, 0);
+  }, 500);
+});
+
+// Responsive font loading
+if ('fonts' in document) {
+  document.fonts.ready.then(function() {
+    document.body.classList.add('fonts-loaded');
+  });
+}
+
+// Smooth scroll polyfill for older browsers
+if (!('scrollBehavior' in document.documentElement.style)) {
+  const script = document.createElement('script');
+  script.src = 'https://cdn.jsdelivr.net/gh/iamdustan/smoothscroll@master/src/smoothscroll.js';
+  document.head.appendChild(script);
+}
+
+// Handle form submission on mobile
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('artistForm');
+  if (form) {
+    form.addEventListener('submit', function() {
+      // Prevent double submission on slow networks
+      const submitBtn = form.querySelector('.submit-btn');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      }
+    });
+  }
+});
 
 // Add event listeners for form progress
 document.querySelectorAll('#artistForm [required]').forEach(field => {
