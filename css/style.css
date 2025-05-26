@@ -11,6 +11,117 @@ body {
   color: #333;
   background-color: #f8f9fa;
 }
+.navbar nav ul li a {
+  text-decoration: none;
+  font-size: 1 rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 16px 30px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 0 20px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content h2, .footer-content h3 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.footer-content p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-section h4 {
+  color: #ffd700;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.footer-bottom {
+  border-top: 2px solid rgba(255,255,255,0.2);
+  padding-top: 20px;
+  margin-top: 30px;
+}
+
+.footer-middle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin: 30px 0;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .footer-middle {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add some animation */
+footer {
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar nav ul li a:hover {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Add bounce animation */
+.navbar nav ul li a:hover {
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% { transform: translateY(-5px) scale(1.05); }
+  40% { transform: translateY(-8px) scale(1.08); }
+  80% { transform: translateY(-3px) scale(1.03); }
+}
 
 .container {
   max-width: 1200px;
@@ -33,14 +144,83 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+.navbar {
+  display: flex;
+  align-items: center;           /* Centers vertically */
+  min-height: 80px;              /* Set navbar height */
+  padding: 10px 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;           /* Centers logo and nav */
+  width: 100%;
+}
+
+.navbar nav {
+  display: flex;
+  align-items: center;           /* Centers nav items */
+}
+
+.navbar nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+  align-items: center;           /* Centers list items */
+}
+
+.navbar nav ul li {
+  display: flex;
+  align-items: center;           /* Centers individual links */
+}
+
+.navbar nav ul li a {
+  text-decoration: none;
+  font-size: 1 rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 18px 30px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
 .logo {
-  height: 50px;
-  width: 50px;
+  height: auto;
+  width: 200px;
   border-radius: 50%;
+  max-width: 200px;   
   border: 3px solid white;
   object-fit: cover;
   background: white;
+}
+
+/* For responsive design */
+@media (max-width: 768px) {
+  .logo {
+    width: 120px;         /* Smaller on mobile */
+  }
+}
+.hero-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+}
+
+.hero-section h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .navbar nav ul {
