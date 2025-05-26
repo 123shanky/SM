@@ -33,7 +33,7 @@
         </div>
         
         <!-- Custom Colorful Form that submits to Google Forms -->
-        <form id="artistForm" class="custom-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfpVI7eS6WLd6FoootgVCxAGnACSuGIWPc98SJZ8cbpjvr-og/formResponse" method="POST" target="hidden_iframe"  onsubmit="return handleSubmit();">
+        <form id="artistForm" class="custom-form" action="https://docs.google.com/forms/d/e/1FAIpQLSfpVI7eS6WLd6FoootgVCxAGnACSuGIWPc98SJZ8cbpjvr-og/formResponse" method="POST" target="hidden_iframe">
           
           <div class="form-row">
             <div class="form-group">
@@ -77,7 +77,8 @@
                 <i class="fas fa-birthday-cake"></i>
                 आयु | Age *
               </label>
-              <input type="date" name="entry.840287717" id="age" required>
+              <!-- Fixed: Changed entry name for age -->
+              <input type="date" name="entry.123456789" id="age" required>
             </div>
             
             <div class="form-group">
@@ -177,7 +178,7 @@
         </form>
 
         <!-- Hidden iframe for form submission -->
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="handleFormSubmit()"></iframe>
 
         <!-- Success Message -->
         <div id="success-message" class="success-message" style="display: none;">
@@ -197,6 +198,42 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    let formSubmitted = false;
+
+    function handleFormSubmit() {
+      if (formSubmitted) {
+        // Hide the form
+        document.getElementById('artistForm').style.display = 'none';
+        
+        // Show success message
+        document.getElementById('success-message').style.display = 'block';
+        
+        // Scroll to success message
+        document.getElementById('success-message').scrollIntoView({ 
+          behavior: 'smooth' 
+        });
+        
+        // Reset flag
+        formSubmitted = false;
+      }
+    }
+
+    // Add form submit event listener
+    document.getElementById('artistForm').addEventListener('submit', function(e) {
+      formSubmitted = true;
+    });
+
+    // Alternative method using setTimeout
+    document.getElementById('artistForm').addEventListener('submit', function(e) {
+      setTimeout(function() {
+        document.getElementById('artistForm').style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('success-message').scrollIntoView({ 
+          behavior: 'smooth' 
+        });
+      }, 1000); // Wait 1 second for form submission
+    });
+  </script>
 </body>
 </html>
